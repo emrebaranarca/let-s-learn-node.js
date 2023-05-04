@@ -1,0 +1,42 @@
+extends layouts/main-layout.pug
+include ../views/mixins/createProduct.pug
+block content
+  main
+    section.py-5.text-center.container.mt-3
+      #carouselExampleIndicators.carousel.slide
+        .carousel-indicators
+          button.active(type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='0' aria-current='true' aria-label='Slide 1')
+          button(type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='1' aria-label='Slide 2')
+          button(type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='2' aria-label='Slide 3')
+        .carousel-inner
+          .carousel-item.active
+            img.d-block.w-100(src='/img/slider1.png' alt='...')
+          .carousel-item
+            img.d-block.w-100(src='/img/slider2.png' alt='...')
+          .carousel-item
+            img.d-block.w-100(src='/img/slider3.png' alt='...')
+        button.carousel-control-prev(type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev')
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.visually-hidden Previous
+        button.carousel-control-next(type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next')
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.visually-hidden Next
+    .album.py-5.bg-body-tertiary
+      .container
+        .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+          each product in products
+            +createProduct(product)
+
+
+  footer.text-body-secondary.py-5
+    .container
+      p.float-end.mb-1
+        a(href='#') Back to top
+      p.mb-1 Album example is &copy; Bootstrap, but please download and customize it for yourself!
+      p.mb-0
+        | New to Bootstrap? 
+        a(href='/') Visit the homepage
+        |  or read our 
+        a(href='/docs/5.3/getting-started/introduction/') getting started guide
+        | .
+  

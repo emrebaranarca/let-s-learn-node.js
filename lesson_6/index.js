@@ -88,7 +88,8 @@ app.use("/",(req,res,next)=>{
 const path=require("path")
 const adminRouter=require("./routers/admin")
 const userRouter=require("./routers/user")
-app.use(bodyParser.urlencoded({ extended: false }))   //parse --> object
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname,"public")))   //parse --> object
 
 
 app.use(adminRouter)
@@ -99,8 +100,6 @@ app.use(userRouter)
 app.use((req,res)=>{
     res.sendFile(path.join(__dirname,"views","404.html"))
 })
-
-
 
 
 app.listen(3000,()=>{

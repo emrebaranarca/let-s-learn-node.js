@@ -1,0 +1,19 @@
+extends layouts/main-layout.pug
+
+block content
+  .container(style='padding-top: 100px;')
+    .row
+      .col-sm-12
+        form(action='/admin/add-product' method='POST')
+          .form-group.row
+            label.col-sm-2.col-form-label(for='name') Name
+            .col-sm-10
+              input#name.form-control(type='text' name='name')
+          .form-group.row.mt-3
+            label.col-sm-2.col-form-label(for='image') Image
+            .col-sm-10
+              input#image.form-control(type='text' name='image')
+          .form-group.row.mt-2
+            .col-sm-10.offset-sm-2
+              input.btn.btn-primary(type='submit' value='Save Product')
+  

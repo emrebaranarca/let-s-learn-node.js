@@ -2,17 +2,36 @@ const express=require("express")
 const path=require("path")
 
 //admin
+const products=[
+    {
+        name:"Samsung S23",
+        image:"1.jpg"
+    },
+    {
+        name:"Samsung S22",
+        image:"2.jpg"
+    },
+    {
+        name:"iphone 13",
+        image:"3.jpg"
+    },
+    {
+        name:"iphone 14",
+        image:"4.jpg"
+    }
+]
 
 const router=express.Router()
 
 router.get("/admin/add-product",(req,res,next)=>{
-   res.sendFile(path.join(__dirname,"../","views","add-product.html"))
+   res.render("add-product",{title : "Add Product"})
 })
 
 
-router.post("/add-product",(req,res,next)=>{
-    console.log(req.body)
+router.post("/admin/add-product",(req,res,next)=>{
+    products.push({ name:req.body.name , image:req.body.image })
     res.redirect("/")
 })
 
-module.exports=router
+module.exports.routes=router
+module.exports.products=products
